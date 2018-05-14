@@ -4,12 +4,28 @@ import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../redux/navigation';
-import WordForm from './components/WordForm';
+import CalculateButton from './components/CalculateButton';
 
 const styles = theme => ({
-  container: {
-    background:'linear-gradient(0deg, #1f5592 0%,#286ba1 37%,#3a94c0 68%,#51c4e1 100%)',
-    height: '100vh'
+  header: {
+    paddingTop: 20
+  },
+  button : {
+    color: '#ffffff',
+    margin: 20,
+    display: 'block',
+    position: 'relative',
+    textTransform: 'uppercase',
+    width: 225,
+    height: 46,
+    border: 0,
+    background:'linear-gradient(0deg, #5481ae 0%, #7faaca 100%)',
+    fontFamily: theme.typography.button.fontFamily,
+    fontSize: theme.typography.button.fontSize,
+    fontWeight: theme.typography.button.fontWeight,
+    '&:focus': {
+      outline: 0
+    }
   }
 })
 
@@ -23,6 +39,8 @@ class WordPage extends Component {
         output: ''
       }
     }
+    this.wordFreq = this.wordFreq.bind(this);
+    this.changeUser = this.changeUser.bind(this);
   }
 
   changeUser = (event) => {
@@ -32,7 +50,9 @@ class WordPage extends Component {
     this.setState({user});
   }
 
-  wordFreq = () => {
+
+  wordFreq() {
+    alert("hi")
     
       var phraseCount = 0;
       var phrase = [];
@@ -115,18 +135,43 @@ class WordPage extends Component {
   }
 
   render() {
-
-    const { translate, classes } = this.props;
-
+    const { translate, classes, onSubmit } = this.props;
       return (
-        <div className={classes.container}>
-          <WordForm
-            onSubmit={this.wordFreq}
-            onChange={this.changeUser}
-            user={this.state.user}
-            translate={translate}
-          />
-      </div>
+        <div>
+          <center>
+            <h1 className={classes.header}>
+              Most Frequent Phrases
+            </h1>
+            <div class="form-group">
+            <label for="exampleTextarea">
+            {translate('input.text')}
+            </label>
+            <div/>
+            <textarea 
+              onChange={this.changeUser.bind(this)} 
+              value= {this.state.user.input} 
+              class="form-control" 
+              id="exampleTextarea" 
+              rows="7">
+            </textarea>
+            </div>
+            <button 
+              className={classes.button}
+              onClick={this.wordFreq.bind(this)}>
+              {translate('buttons.calculate')}
+            </button>
+            <div class="form-group">
+            <label for="exampleTextarea">{translate('output.text')}</label>
+            <div/>
+            <textarea 
+              value={this.state.user.output} 
+              class="form-control" 
+              id="exampleTextarea" 
+              rows="7">
+            </textarea>
+            </div>
+          </center>
+        </div>
       );
     }
   }

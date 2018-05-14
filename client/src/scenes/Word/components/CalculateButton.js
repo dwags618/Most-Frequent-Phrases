@@ -15,7 +15,7 @@ const styles = theme => ({
     display: 'block',
     position: 'relative',
     textTransform: 'uppercase',
-    width: 450,
+    width: 225,
     height: 46,
     border: 0,
     background:'linear-gradient(0deg, #5481ae 0%, #7faaca 100%)',
