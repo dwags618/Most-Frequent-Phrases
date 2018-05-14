@@ -7,9 +7,9 @@
     "calculate": ["Calculate"]
   },
   "input": {
-  	"text": ["hello world"]
+  	"text": ["Input: String of any length"]
   },
   "output": {
-  	"text": ["hello world"]
+  	"text": ["Output: Top 10 most frequent repeated phrases. A phrase is a stretch of three to ten consecutive words and cannot span sentences."]
   }
 }
