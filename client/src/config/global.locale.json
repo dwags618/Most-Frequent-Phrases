@@ -1,10 +1,15 @@
 {
-  
   "word-page": {
     "text": ["Enter string here"]
   },
 
   "buttons": {
     "calculate": ["Calculate"]
+  },
+  "input": {
+  	"text": ["hello world"]
+  },
+  "output": {
+  	"text": ["hello world"]
   }
 }
